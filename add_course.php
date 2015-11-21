@@ -18,8 +18,8 @@ class Courses extends adb{
           @param $department this is the department that handles this particular course 		  
 		*/
 
-	function updateCourse($code, $title, $semester,$lecturer,$facultyIntern,$objective,$description,$courseMaterials,
-	   $prerequisites,$academicYear,$department){
+	function updateCourse($code, $title,$department,$academicYear,$lecturer, $facultyIntern,$prerequisites,$semester,$description,$objective,$courseMaterials
+	   ){
 	   $insert="update  courses set course_code='$code',course_description='$description',course_materials='$courseMaterials',
        course_objective='$objective',	prerequisites='$prerequisites',lecturer='$lecturer',faculty_intern='$facultyIntern',department='$department',
        semester='$semester',academic_year='$academicYear'	where course_title='$title'";
@@ -30,7 +30,7 @@ class Courses extends adb{
 	//echo $insert;
 	
 	}}
-	}
+	
 	function displayCourse(){
 		$str_query="select * from courses ";
 		if(!$this->query($str_query)){
@@ -38,6 +38,6 @@ class Courses extends adb{
 		}	
 		return $this->fetch();
 		
-	}
+	}}
 
 ?>
