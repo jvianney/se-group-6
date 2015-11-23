@@ -13,6 +13,7 @@ if(isset($_FILES['file']))
     $fileTmp = $file['tmp_name'];
     $fileType = $file['type'];
     $fileSize = $file['size'];
+    $fileError = $file['error'];
     
     
     /*white listing file extensions
@@ -33,6 +34,24 @@ if(isset($_FILES['file']))
     
     $fileExtension = strtolower(end($fileExtension));
     
+    
+    /*files allowed
+    
+    */
+    $allowed = array('txt', 'pdf', 'docx', 'pages');
+    
+    if(in_array($fileExtension, $allowed) && ($fileSize <= 5,242,880byte)) && ($fileError === 0)
+    
+    {
+        //'project/' is the name of the destination folder on my localhost. in the final submission this will change the server directory 
+        $fileDestination = 'project/';
+    }
+    
+   
+        
+        
+        */
+     
     
     
     
