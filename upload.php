@@ -40,17 +40,23 @@ if(isset($_FILES['file']))
     */
     $allowed = array('txt', 'pdf', 'docx', 'pages');
     
-    if(in_array($fileExtension, $allowed) && ($fileSize <= 5,242,880byte)) && ($fileError === 0)
+    
+    
+    if(in_array($fileExtension, $allowed) && $fileSize <= 5242880 && $fileError == 0)
     
     {
-        //'project/' is the name of the destination folder on my localhost. in the final submission this will change the server directory 
+        //'project/' is the name of the destination folder on my localhost. In the final submission this will change the server directory 
         $fileDestination = 'project/';
     }
     
+    if(move_uploaded_file($fileTmp,  $fileDestination ))
+    {
+        echo "The file was successfully uploaded to" . $fileDestination;
+    }
    
         
         
-        */
+        
      
     
     
