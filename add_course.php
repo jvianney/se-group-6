@@ -2,9 +2,11 @@
 <?php
 
 include("adb.php");
-/*This is the courses class. it has the updatecourse function which takses in  details of the course as parameters */
+
 class Courses extends adb{
-    /*@param $obj- is an object of the courses class
+         /*This is the courses class. it has the updatecourse function which takses in  details of the course as parameters */ 
+         /*updateCourse()-this function takes the parameter below to update a particular course*/
+         /*@param $obj- is an object of the courses class
 		  @param $code-this is a unique code of a of a particular course
 		  @param $title-this is the title of the course
 		  @param $semester-this is the semester in which the courses are offered
@@ -30,7 +32,7 @@ class Courses extends adb{
 	//echo $insert;
 	
 	}}
-	
+	/*The display() course method displays the details of a course*/
 	function displayCourse(){
 		$str_query="select * from courses ";
 		if(!$this->query($str_query)){
@@ -38,6 +40,28 @@ class Courses extends adb{
 		}	
 		return $this->fetch();
 		
-	}}
+	}
+	/*the SignUp() takes in the following parameters to add a user to the system.
+	@param $firstName- this is the first name of the user
+	@param $surname - this takes in the surname of the user
+	@param $password-this is the password of the user
+	@param $email-this is the email that the user will use to sign up for verification*/
+	function signUp($firstName,$surname,$password,$email){
+	$insert="insert into signUp set first='$firstName',surname='$surname',password='$password',email='$email'";
+	if(!$this->query($insert)){
+	echo "not successfully inserted";
+	}
+	}
+	/*this login() function takes parameters to give the user access to the system
+	@param $email-this is the email that the user will use to login
+	@param $password-this is the password that the use will use to login*/
+	function login($email,$password){
+	$login="select * from sign_up where email='$email'AND password='$password'";
+	if(!$this->query($login)){
+	return false;
+	}
+	return $this->fetch();
+	}
+	}
 
 ?>

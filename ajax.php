@@ -4,16 +4,21 @@
 $cmd=$_REQUEST['cmd'];
 switch($cmd)
 {
-	case 1:
-	update();
-	break;
-	case 2;
-	viewCourse();
-	break;
-		
+		case 1:
+		update();
+		break;
+		case 2;
+		viewCourse();
+		break;
+		case 3;
+		signUp();
+		break;
+	   case 4;
+	   login();
+	   break;   
 		
 		}
-		/* The update function updates the details of a particular course*/
+		/* The update() responds to an ajax request to update the details of a particular course. it takes parameters such as*/
 		/**@param $obj- is an object of the courses class
 		  @param $code-this is a unique code of a of a particular course
 		  @param $title-this is the title of the course
@@ -46,6 +51,7 @@ switch($cmd)
 		 $row=$obj->updateCourse($code,$title,$department,$academicYear,$lecturer,$facultyIntern,
 		 $prerequisites,$semester,$description,$objective,$courseMaterials);
 		}
+		/*the viewCourse() responds to an ajax request to display the details of the course. the details are displayed in a jason format*/
 		
 		function viewCourse(){
 		  include("add_course.php");
@@ -54,16 +60,49 @@ switch($cmd)
 		if(!$row){
         echo '{"result": 0, "message": "You have no course in the database"}';
         return;
-    }
-    echo '{"result": 1, "message": [';
-    while($row){
+         }
+        echo '{"result": 1, "message": [';
+        while($row){
         echo json_encode($row);
         $row = $obj->fetch();
         if($row){
             echo ',';
         }
     }
-    echo "]}";
+     echo "]}";
+    return;
+}
+    /*the signUp() responds to an ajax request to add a user to the system*/
+    function signUp(){
+	include("add_course.php");
+	$first=$_GET['firstName'];
+	$surname=$_GET['surname'];
+	$email=$_GET['email'];
+	$password=$_GET['password'];
+	$row=$obj->signUp($first,$surname,$email,$password);
+	
+	
+	}
+	/*the login() responds to an ajax request to login a user into the system*/
+	function login(){
+		  include("add_course.php");
+		  $obj=new Courses();
+		  $email=$_GET['email'];
+		  $password=$_GET['password'];
+		  $row=$obj->login($email,$password);
+		if(!$row){
+        echo '{"result": 0, "message": "You have no course in the database"}';
+        return;
+         }
+        echo '{"result": 1, "message": [';
+        while($row){
+        echo json_encode($row);
+        $row = $obj->fetch();
+        if($row){
+            echo ',';
+        }
+    }
+     echo "]}";
     return;
 }
 		/* if ($row=$obj->displayCourse())
