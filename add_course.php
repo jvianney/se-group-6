@@ -56,7 +56,7 @@ class Courses extends adb{
 	@param $email-this is the email that the user will use to login
 	@param $password-this is the password that the use will use to login*/
 	function login($email,$password){
-	$login="select * from sign_up where email='$email'AND password='$password'";
+	$login="select * from login where email='$email'AND password='$password'";
 	if(!$this->query($login)){
 	return false;
 	}
