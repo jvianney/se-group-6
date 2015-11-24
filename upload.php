@@ -1,8 +1,9 @@
 <?php
 
 if(isset($_FILES['file']))
+$file = $_FILES['file'];
 {
-    $file = $_FILES['file'];
+        
     
     /* Tests to see whether form works as well as file type uploaded  
     print_r($file);
@@ -42,20 +43,25 @@ if(isset($_FILES['file']))
     
     
     
-    if(in_array($fileExtension, $allowed) && $fileSize <= 5242880 && $fileError == 0)
-    
+    if(in_array($fileExtension, $allowed) && $fileSize <= 5242880 && $fileError === 0)
+       
     {
+    //Changing the file name
+        $newFileName = uniqid('', true) . '.' . $fileExtension;
+        
         //'project/' is the name of the destination folder on my localhost. In the final submission this will change the server directory 
-        $fileDestination = 'project/';
+        $fileDestination = 'upload/' . $newFileName;
     }
+    
+    
     
     if(move_uploaded_file($fileTmp,  $fileDestination ))
     {
-        echo "The file was successfully uploaded to" . $fileDestination;
+        echo "The file was successfully uploaded to " . $fileDestination;
     }
    
         
-        
+       
         
      
     
