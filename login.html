@@ -2,12 +2,14 @@
 	<head>
 	<script src="jquery/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript">
+	//this function makes an ajax request
 	function sendRequest(u){
 	var obj=$.ajax({url:u,async:false});
 	var result=$.parseJSON(obj.responseText);
 	return result;
 	
 	}
+	// this function authenticates the user before access is granted
 	function login(){
 	
 	var email=$('#email').val();
