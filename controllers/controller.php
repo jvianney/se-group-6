@@ -3,7 +3,7 @@
     
     if (!isset($_REQUEST['cmd'])){
         echo '{"result" : 0, "message" : "Command Not Set"}';
-        exit();
+        exit;
     }
     
     $cmd = $_REQUEST['cmd'];
