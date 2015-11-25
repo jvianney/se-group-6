@@ -33,6 +33,7 @@
         
         while ($row){
             echo json_encode($row);
+            $row = $course->fetch();
             if($row){
                 echo ",";
             }
