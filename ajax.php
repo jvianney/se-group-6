@@ -91,7 +91,8 @@ switch($cmd)
 		  $password=$_GET['password'];
 		  $row=$obj->login($email,$password);
 		if(!$row){
-        echo '{"result": 0, "message": "You have no course in the database"}';
+		echo mysql_error();
+        echo '{"result": 0, "message": "You are not  in the database"}';
         return;
          }
         echo '{"result": 1, "message": [';
