@@ -1,5 +1,10 @@
 <?php
 
+/**
+	 *@author Emmanuel Nii Tackie <emmanuel.tackie@ashesi.edu.gh.com>
+	 *@version 1 
+	 */
+
 if(isset($_FILES['file']))
 $file = $_FILES['file'];
 {
@@ -9,7 +14,20 @@ $file = $_FILES['file'];
     print_r($file);
     */
     
-    //File properties
+    
+    /*
+    File properties
+    @variable $fileName contains the name of the file
+    @variable $fileTmp contains the temporary location of the file
+    @variable $fileType contains the file type of the uploaded file
+    @variable $fileSize contains the file size of the file
+    @variable $fileError contians the errors encounted in file uploads
+    
+    
+    
+    
+    */
+    
     $fileName = $file['name'];
     $fileTmp = $file['tmp_name'];
     $fileType = $file['type'];
@@ -36,38 +54,27 @@ $file = $_FILES['file'];
     $fileExtension = strtolower(end($fileExtension));
     
     
-    /*files allowed
     
-    */
     $allowed = array('txt', 'pdf', 'docx', 'pages');
     
     
+    if(in_array($fileExtension,$allowed)=== false){
+         $errors[]="extension not allowed, please choose a txt,  pdf, docx or pages file extension.";
+      }
+      
+      if($fileSize > 5242880){
+         $errors[]='File size must be excately 5 MB';
+		}
+      
+      if(empty($errors)==true){
+         move_uploaded_file($fileTmp,"upload/".$fileName);
+         echo "Success";
+      }
     
-    if(in_array($fileExtension, $allowed) && $fileSize <= 5242880 && $fileError === 0)
-       
-    {
-    //Changing the file name
-        $newFileName = uniqid('', true) . '.' . $fileExtension;
-        
-        //'project/' is the name of the destination folder on my localhost. In the final submission this will change the server directory 
-        $fileDestination = 'upload/' . $newFileName;
-    }
-    
-    
-    
-    if(move_uploaded_file($fileTmp,  $fileDestination ))
-    {
-        echo "The file was successfully uploaded to " . $fileDestination;
-    }
-   
-        
-       
-        
-     
-    
-    
-    
-    
-    
+      else
+      {
+         print_r($errors);
+      }
     
 }
+    

@@ -2,16 +2,24 @@
 <html>
 <head>
     <meta charset="utf-8">
+       <link rel="stylesheet" href="style.css">
+    <script src="jquery/jquery-1.11.3.min.js"></script>
+    
     <title>File Upload</title>
+  
     </head>
     
     <body> 
         
+        <h1>Upload a File</h1>
+    
     <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="upload">
+        <input  type="file" name="file">
+        <input class= "styled-button-2" type="submit" value="upload">
         
         </form>
+        
+        
     </body>
 
 
