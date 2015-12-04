@@ -23,6 +23,7 @@ a {color:white}
     border:2px dashed #ccc;
     line-height: 400px;
     text-align: center;
+    align-content: center;
 }
 
 .droparea.dragover{

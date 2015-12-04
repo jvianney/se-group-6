@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Drag and Drop Upload</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    
+    
+    <body>
+    
+    <div id="upload"></div>
+        <div class="droparea" id="droparea"> Drop File Here To Upload</div>
+    
+        
+        <script>
+        
+        (function(){
+            var droparea = document.getElementById('droparea');
+            
+            
+            var displayUploads = function(data){
+                var uploads = document.getElementById('upload'),
+                    anchor,
+                    x;
+               for(x = 0; x < data.length; x = x +1){
+            anchor = document.createElement('a');
+                   anchor.href = data[x].file;
+                  anchor.innerText = data[x].name; 
+                   uploads.appendChild(anchor);
+               } 
+            }
+            
+            var upload = function(files){
+                var formData = new FormData(),
+                    xhr = new XMLHttpRequest(),
+                    i;
+                
+                for(i=0; i<files.length; i = i + 1){
+                    formData.append('file[]', files[i]);
+                          
+                }
+            
+            xhr.onload = function(){
+                var data = JSON.parse(this.responseText);
+                
+             displayUploads(data);   
+            }
+            
+            xhr.open('post', 'uploadd.php');
+            xhr.send(formData);
+            }
+            
+      
+        droparea.ondrop = function(e){
+            e.preventDefault();
+            this.className = 'droparea';
+            upload(e.dataTransfer.files);
+            
+            
+        };
+            
+            
+    droparea.ondragover = function(){
+        this.className = 'droparea dragover';
+        return false;
+    } ;      
+        
+    
+    droparea.ondragleave = function(){
+        this.className = 'droparea';
+        return false;
+    };
+        }());
+        
+        
+        
+        
+        </script>
+    
+    </body>
+    
+    
+    
+    </head>
+
+</html>
