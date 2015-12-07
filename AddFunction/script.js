@@ -34,7 +34,9 @@ function gothere(){
 	var send=sendRequest("extend.php?cmd=1&cd="+course_code+"&ct="+course_title+"&cs="
 		+semester+"&cy="+yr+"&cdes="+course_descrip+"&co="+course_obj+"&cm="+course_mat+
 		"&dept="+course_dept+ "&cl="+course_lect+"&cfi="+course_fi+"&pc="+pre);
-	
+	alert("extend.php?cmd=1&cd="+course_code+"&ct="+course_title+"&cs="
+		+semester+"&cy="+yr+"&cdes="+course_descrip+"&co="+course_obj+"&cm="+course_mat+
+		"&dept="+course_dept+ "&cl="+course_lect+"&cfi="+course_fi+"&pc="+pre);
 	if(send.result==1){
 		alert(send.message);
 		return;
@@ -50,57 +52,57 @@ function validate(){
 			window.alert("Please enter the course code");
 			//course_code.focus();
 			document.getElementById("cd").focus;
-			return false;
+			return;
 		}
 	if (course_title == ""){
 		window.alert("Please enter the course the title or name");
 		//course_title.focus();
-		return false;
+		return;
 	}
 	if (semester == ""){
 		window.alert("Please enter the semester the course is taken");
 		//semester.focus();
-		return false;
+		return;
 	}
 	if (yr == ""){
 		window.alert("Please enter the year in which the course is taken");
 		//yr.focus();
-		return false;
+		return;
 	}
 	if (course_descrip == ""){
 		window.alert("Please enter the course Description");
 		//course_descrip.focus();
-		return false;
+		return;
 	}
 	if (course_obj == ""){
 		window.alert("Please enter the course objective");
 		//course_obj.focus();
-		return false;
+		return;
 	}
 	if (course_mat == ""){
 		window.alert("Please enter the course materials");
 		//course_mat.focus();
-		return false;
+		return;
 	}
 	if (course_dept == ""){
 		window.alert("Please enter the course materials");
 		//course_dept.focus();
-		return false;
+		return;
 	}
 	if (course_lect == ""){
 		window.alert("Please enter the course lecturer(s)");
 		//course_lect.focus();
-		return false;
+		return;
 	}
 	if (course_fi == ""){
 		window.alert("Please enter the course FI(s)");
 		//course_fi.focus();
-		return false;
+		return;
 	}
 	if (pre == ""){
 		window.alert("Please enter the course prerequisite(s)");
 		//pre.focus();
-		return false;
+		return;
 	}
 
 }
