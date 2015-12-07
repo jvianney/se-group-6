@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title></title>
+<meta name="" content="">
+    <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="lecScriptDisplay.js"></script>
+</head>
+<body>
+
+<!-- A form to take details of a course to be added in to the db -->
+		<form id="EditLecturerForm">
+		<fieldset>
+        <legend><strong>Edit a Lecturer</strong></legend>
+        <center><p><span id="dis"></span></p></center>
+			Lecturer ID: <br>
+			<input type="text" name="lecid" id="lecid" size="8" readonly><br><br>
+			Lecturer First Name:<br>
+			<input type="text" name="lfn" id="lfn" size="15"><br><br>
+			Lecturer Last Name:<br>
+			<input type="text" name="lln" id="lln" size="15"><br><br>
+			Office Hours:<br>
+			<textarea cols="55" name="ohrs" id="ohrs"></textarea><br><br>
+			Lecturer's Department:<br>
+			<input type="text" name="ld" id="ld" size="15"><br><br>
+			Course(s) Taught:<br>
+			<textarea cols="55" name="ct" id="ct"></textarea><br><br>
+			<button type="submit" onclick="update()">Edit</button>
+			</fieldset>
+		</form>
+		<script>
+			$(document).ready(function(){
+				getId();
+			});
+		</script>
+		
+</body>
+</html>
