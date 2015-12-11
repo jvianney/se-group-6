@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="jquery_mobile/jquery.mobile-1.4.5.min.css">
+
+<script src="jquery_mobile/jquery-1.11.3.min.js"></script>
+<script src="jquery_mobile/jquery.mobile-1.4.5.min.js"></script>
+
+<script type="text/javascript">
+$.support.cors=true;
+
+function sendRequest(u){
+				
+				var obj=$.ajax({url:u,async:true});
+				//Convert the JSON string to object
+				//alert($.parseJSON(obj.responseText));
+				var result=$.parseJSON(obj.responseText);
+				//alert("result");
+				return result;	//return object
+				
+			}
+			
+//$(document).ready(function()
+function displayItem(){
+
+var theUrl="http://cs.ashesi.edu.gh/~csashesi/class2016/dorcas-tamatey/phone_gap/ajax.php?cmd=2";
+			//alert("Hello firstie");	
+var obj=sendRequest(theUrl);
+
+if(obj.result==0){
+alert("nothing in the database");
+
+}
+ if(obj.result==1){
+ //prompt("u",theUrl);
+
+ for(var count=0; count<obj.message.length; count++){
+ 
+ $('#list').append("<li>" + obj.message[count].first + " "+obj.message[count].second + " "+ obj.message[count].age+"</li> ");
+}
+}
+}
+
+
+</script>
+</head>
+<div data-role="header" >
+<a href="help.html" data-role="button"data-icon="Help" data-transition="pop">Help</a>
+<h1 style="color:white"> Data Collection Center</h1>
+
+<div data-role="navbar">
+<ul>
+<li><a href="index.html" data-transition="pop">Enter Reading</a></li>
+<li><a href="#anylink"></a></li>
+<li><a href="display.html" data-transition="pop">View</a></li>
+<li><a href="#anylink">Contact</a></li>
+</ul>
+</div>
+
+</div>
+<body onload="displayItem()">
+
+<ol data-role='listview' id="list">
+</ol>
+</body>
+
+
+		
+		
+</html>	
+

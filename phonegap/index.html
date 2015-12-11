@@ -1,0 +1,81 @@
+<html>
+<head>
+<link rel="stylesheet" href="jquery_mobile/jquery.mobile-1.4.5.min.css">
+
+<script src="jquery_mobile/jquery-1.11.3.min.js"></script>
+<script src="jquery_mobile/jquery.mobile-1.4.5.min.js"></script>
+<link rel ="stylesheet" href="Style.min.css"> 
+<script type="text/javascript">
+$.support.cors=true;
+function sendRequest(u){
+				
+				var obj=$.ajax({url:u,async:true});
+				//Convert the JSON string to object
+				var result=$.parseJSON(obj.responseText);
+				return result;	//return object
+				
+			}
+			function addData(){
+			    var fName=$("#first").val();
+				var sName =$("#second").val();
+				var age=$("#age").val();
+				//alert(fName);
+				var theUrl="http://cs.ashesi.edu.gh/~csashesi/class2016/dorcas-tamatey/phone_gap/ajax.php?cmd=1&first_name="+fName+"&second_name="+sName+"&age="+age;
+				prompt("u",theUrl);
+				
+				var obj=sendRequest(theUrl);		//send request to the above url
+				
+			}
+</script>
+</head>
+<div data-role="header" data-theme="c" >
+ <a href="#" data-role="button"data-icon="Home" style="background-color:white">Home</a>
+ <h1 style="color:white"> Data Collection Center</h1>
+ <a href="help.php" data-role="button" data-icon="Help" data-transition="Flip"style="background-color:white">Help</a>
+ 
+ 
+ <div data-role= "navbar" style="background-color:#33CCFF" >
+  <ul  >
+   <li><a href="index.html" data-transition="turn" >Enter Reading</a></li>
+   <li><a href="display.html" data-transition="pop">View</a></li>
+   <li><a href="#anylink">Contact</a></li>
+  </ul>
+ </div>
+</div>
+<body>
+<div data-role="collapsible" >
+ <h1 style="background-color:white">Add Details!</h1>
+ 
+ <div data-role="fieldcontain">
+  <label for="text">First Name:</label>
+  <input type="text"name ="first_name" id ="first">
+  <label for="text">second Name:</label>
+  <input type="text"name ="second_name" id ="second">
+
+  <label for="text">age:</label>
+  <input type="text"name ="age" id ="age">
+  <input type ="button" value="submit" onclick="addData()">
+<div id="message"></div>
+</div>
+
+</div>
+
+</body>
+<div data-role="footer">
+<h1>copy right @ 22/09/205, All right reserved</h1>
+</div>
+
+<script>
+
+			
+			function getData(){
+			   
+				var theUrl="http://cs.ashesi.edu.gh/~csashesi/class2016/dorcas-tamatey/phone/ajax.php?cmd=2";
+				
+				var obj=sendRequest(theUrl);		//send request to the above url
+				if(obj.result==1){					//check result
+					
+			}}
+			
+</script>
+</html>
